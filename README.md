@@ -1,7 +1,7 @@
 # Pyspark
 Repo de la clase de Pyspark para Fuentes_2024 
 
-# Como moontar el docker
+# Como montar el docker
 
 una vez que estemos dentro de la carpeta en la que vayamos a trabajar vamos a clonar el repositorio de git de la clase de la siguiente manera: 
 
