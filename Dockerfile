@@ -4,6 +4,9 @@ FROM python:3.10-slim
 # Set the working directory in the container
 WORKDIR /pyspark
 
+# Install Java (OpenJDK)
+RUN apt-get update && apt-get install -y openjdk-11-jre-headless && rm -rf /var/lib/apt/lists/*
+
 # Copy the requirements files
 COPY requirements.txt /pyspark/requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
