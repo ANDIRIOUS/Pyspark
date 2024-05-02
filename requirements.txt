@@ -1,5 +1,5 @@
 pyspark
-findspark 
-pandas 
+findspark
+pandas
 notebook
 jupyterlab
