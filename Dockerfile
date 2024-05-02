@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of your application's code
 COPY ejemplo.parquet .
 COPY Produccion_Pesquera_2020.csv .
-COPY prueba.ipynb .
+COPY clase.ipynb .
 
 # Expose the port Jupyter Notebook will run on
 EXPOSE 8888
