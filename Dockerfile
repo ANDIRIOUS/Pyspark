@@ -11,11 +11,13 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of your application's code
-COPY . .
+COPY ejemplo.parquet .
+COPY Produccion_Pesquera_2020.csv .
+COPY prueba.ipynb .
 
 # Expose the port Jupyter Notebook will run on
 EXPOSE 8888
 
 # Run Jupyter Notebook
 # --NotebookApp.token='' disables the token. You should consider security implications.
-CMD ["start-notebook.sh", "--NotebookApp.token=''"]
+CMD ["start-notebook.sh", "--NotebookApp.token=''", "--NotebookApp.password=''"]
