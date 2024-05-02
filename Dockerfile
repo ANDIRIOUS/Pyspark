@@ -1,28 +1,32 @@
-# Use an official Python runtime as a parent image
-FROM python:3.10-slim
+# Start with a Debian base image
+FROM debian:buster-slim
 
 # Set the working directory in the container
-WORKDIR /pyspark
+WORKDIR /app
 
-# Install necessary packages and handling potential issues with apt-get
+# Install Python, Java, and other necessary tools
 RUN apt-get update && \
-    apt-get install -y gnupg && \
-    apt-get install -y ca-certificates && \
-    echo "deb http://security.debian.org/debian-security stretch/updates main" > /etc/apt/sources.list.d/jessie-backports.list && \
-    apt-get update && \
-    apt-get install -y openjdk-11-jre-headless && \
+    apt-get install -y python3-pip python3-dev openjdk-11-jre-headless curl && \
+    apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Copy the requirements files
-COPY requirements.txt /pyspark/requirements.txt
+# Create symlinks for python3 to python and pip3 to pip
+RUN ln -s /usr/bin/python3 /usr/bin/python && \
+    ln -s /usr/bin/pip3 /usr/bin/pip
+
+# Install Python packages
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the entire directory where your notebook exists into the container
-# Make sure to change `./local_notebook_directory` to the path where your notebook is located
-COPY ./prueba.ipynb /pyspark
+# Copy the Jupyter notebook into the container
+COPY ./prueba.ipynb /app
 
 # Expose the port Jupyter will run on
 EXPOSE 8888
 
-# Start Jupyter Lab
+# Configure environment variables for Java and PySpark
+ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
+ENV PATH $PATH:$JAVA_HOME/bin
+
+# Start Jupyter Lab with desired configuration
 ENTRYPOINT ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--NotebookApp.token=''", "--NotebookApp.password=''"]
