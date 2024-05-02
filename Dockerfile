@@ -16,7 +16,7 @@ RUN ln -s /usr/bin/python3 /usr/bin/python && \
 
 # Copy the requirements files
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt -v
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the Jupyter notebook into the container
 COPY ./prueba.ipynb /app
