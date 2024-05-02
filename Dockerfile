@@ -4,8 +4,14 @@ FROM python:3.10-slim
 # Set the working directory in the container
 WORKDIR /pyspark
 
-# Install Java (OpenJDK)
-RUN apt-get update && apt-get install -y openjdk-11-jre-headless && rm -rf /var/lib/apt/lists/*
+# Install necessary packages and handling potential issues with apt-get
+RUN apt-get update && \
+    apt-get install -y gnupg && \
+    apt-get install -y ca-certificates && \
+    echo "deb http://security.debian.org/debian-security stretch/updates main" > /etc/apt/sources.list.d/jessie-backports.list && \
+    apt-get update && \
+    apt-get install -y openjdk-11-jre-headless && \
+    rm -rf /var/lib/apt/lists/*
 
 # Copy the requirements files
 COPY requirements.txt /pyspark/requirements.txt
