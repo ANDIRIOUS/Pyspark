@@ -14,12 +14,14 @@ RUN apt-get update && \
 RUN ln -s /usr/bin/python3 /usr/bin/python && \
     ln -s /usr/bin/pip3 /usr/bin/pip
 
-# Install Python packages
-COPY requirements.txt .
+# Copy the requirements files
+COPY requirements.txt /app//requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the Jupyter notebook into the container
 COPY ./prueba.ipynb /app
+COPY ./ejemplo.parquet /app
+COPY ./Produccion_Pesquera_2020.csv /app
 
 # Expose the port Jupyter will run on
 EXPOSE 8888
