@@ -28,6 +28,6 @@ Se va a quedar pensando en algún punto. Si esto pasa busquen la línea en la te
 Denle control click en el segundo link que aparece: http://127.0.0.1:8888/lab  
 Esto los deberá llevar al jupyter notebook en su browser con el que trabajaremos el resto de la clase. 
 
-Para entregar la tarea hagan un fork de este repositorio y súbanla en la carpeta de tareas. Su tarea debe traer su nombre y clave única en el nombre nombre del archivo. Para la tarea utilicen cuantas celdas necesiten. No necesitan hacerlo todo en una celda.
+Para entregar la tarea hagan un fork de este repositorio y súbanla en la carpeta de tareas. Su tarea debe traer su clave única en el nombre del archivo. Para la tarea utilicen cuantas celdas necesiten. No necesitan/pueden hacerlo todo en una celda.
 
 
