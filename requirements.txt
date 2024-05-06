@@ -1,3 +1,4 @@
 pyspark==3.3.0
 findspark
 pandas
+matplotlib.pyplot==2.0.2
