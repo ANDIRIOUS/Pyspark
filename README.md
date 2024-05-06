@@ -1,7 +1,7 @@
 # Pyspark
 Repo de la clase de Pyspark para Fuentes_2024 
 
-
+![Pyspark](mamados)
 
 # Como montar el docker
 En una carpeta nueva FUERA DEL REPOSITORIO DE FUENTE DE DATOS vamos a clonar el repositorio de git de la clase de la siguiente manera: 
